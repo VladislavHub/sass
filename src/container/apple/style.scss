@@ -1,0 +1,235 @@
+@use '../../lib/service.scss' as s;
+
+
+.header {
+    @extend .section;
+    background-color: s.color('backgroundDark');
+ }
+
+.header_content {
+    @extend .section_content;
+    display: flex;
+    padding: s.space(4) 0;
+    justify-content: space-between;
+   
+}
+
+.header_block {
+    display: flex;
+    gap: s.space(8);
+    align-items: center;
+}
+
+.header_icon {
+    @include s.click
+}
+
+.header_link {
+    
+    color: s.color('whiteLight');
+    
+    @include s.click
+}
+
+.header_link {
+    font-size: s.size('small');
+}
+
+.header_info {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.header_info_content {
+    @extend .section_content;
+    display: flex;
+
+    justify-content: space-between;
+    background-color: #fff;
+    padding: s.space(4) 0;
+}
+
+.haeder_info_text {
+    color: s.color('fontDark');
+    font-size: 14px;
+}
+
+.header_info_button {
+    color: #06C;
+    font-size: 14px;
+    text-decoration: none;
+    @include s.click
+}
+
+.icon_button {
+    padding-left: s.space(2);
+}
+
+
+
+.product_content {
+    display: grid;
+    gap: s.space(5);
+    text-align: center;
+    align-content: center;
+}
+
+.product_title {
+    font-size: 56px;
+    font-weight: bold;
+}
+
+.product_description {
+    font-size: 28px;
+}
+
+.product_action {
+    display: flex;
+    align-items: center;
+    gap: s.space(5);
+    justify-content: center;
+
+    @include s.click;
+}
+
+.product_link {
+    @include s.linkAction;
+}
+
+.product {
+    @extend .section;
+    padding-top: s.space(20);
+    padding-bottom: s.space(20);
+
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.product-big {
+     max-height: 700px;
+     height: 100vh;
+
+     background-size: cover;
+   
+        @media all and (width < s.screen('tablet')) {
+         background-size: 150;
+         max-height: 600px;
+     }
+}
+
+.product-small {
+    max-height: 580px;
+    height: 100vh;
+
+    background-size: cover;
+  
+       @media all and (width < s.screen('tablet')) {
+        background-size: 150;
+        max-height: 600px;
+    }
+}
+
+
+.product--dark {
+    .product_title, .product_description {
+        color: s.color('background');
+    }
+
+    background-color: #000;
+}
+
+.product--top {
+    .product_content {
+        align-content: flex-start;
+    }
+}
+
+.product--bottom {
+    .product_content {
+        align-content: flex-end;
+    }
+}
+
+.product--light {
+    .product_title, .product_description {
+        color: s.color('fontDark');
+    }
+    background-color: #fff;
+}
+
+$productImage: (
+    'iphone-pro' '/img/iphone-pro.png' #000,
+    'iphone' '/img/iphone.png' #fafafa,
+    'iwatch' '/img/watch.png' #000,
+    'trade-in' '/img/trade-in.png' #fbfbfd,
+    'wwwdc' '/img/wwwdc.png' #000,
+    'ipad' '/img/ipad.png' #fbfbfb,
+    'small_business' '/img/small_business.png' #000,
+    'gift' '/img/gift.png' #fbfbfd,
+    'card' '/img/card.png' #fbfbfd,
+);
+
+@each $class, $url, $color in $productImage {
+    .product--#{$class} {
+        background-image: url(#{$url});
+        background-color: $color;
+    }
+
+}
+
+.product-small {
+    .product_title {
+        font-size: 40px;
+    }
+
+    .product_description {
+        font-size: 20px;
+    }
+}
+
+.footer {
+    padding: 40px 360px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    
+
+    @media all and (width < s.screen('desktop')) {
+        // grid-template-columns: repeat(4, 1fr);
+        padding: 40px 260px;
+    }
+
+    @media all and (width < s.screen('laptop')) {
+        // grid-template-columns: repeat(4, 1fr);
+        padding: 40px 160px;
+    }
+
+    @media all and (width < s.screen('tablet')) {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 40px 80px;
+    }
+}
+
+.footer_content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media all and (width < s.screen('tablet')) {
+       padding-left: 80px;
+    }
+}
+
+.footer_title {
+    color: #1D1D1F;
+    font-size: 12px;
+    font-weight: 600;
+    padding-bottom: 4px;
+}
+
+.footer_link {
+    color: #424245;
+    font-size: 12px;
+    font-weight: 400;
+}
